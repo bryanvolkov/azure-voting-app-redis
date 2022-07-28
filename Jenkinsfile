@@ -5,7 +5,7 @@ pipeline {
         stage('Verify Branch') {
             steps {
                 // echo "$GIT_BRANCH"
-                pwsh(script: 'Write-Output "Hello World"')
+                powershell(script: 'Write-Output "Hello World"')
             }
         }
     }
