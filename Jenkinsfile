@@ -10,5 +10,3 @@ pipeline {
     }
     
 }
-
-// Just a comment
