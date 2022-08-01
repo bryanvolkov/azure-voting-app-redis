@@ -5,14 +5,14 @@ pipeline {
         stage('Verify Branch') {
             steps {
                 // echo "$GIT_BRANCH"
-                powershell(script: 'Write-Output "Hello World"')
+                sh(script: 'Write-Output "Hello World"')
             }
         }
 
         stage('Docker Build'){
             steps{
-                powershell(script: 'docker images -a')
-                powershell(script: """
+                sh(script: 'docker images -a')
+                sh(script: """
                     cd azure-vote/
                     docker images -a
                     docker build -t jenkins-pipeline .
@@ -21,6 +21,51 @@ pipeline {
                 """)
             }
         }
+
+        // stage('Start test app') {
+        //     steps{
+        //         powershell(script: """
+        //         # start app line miss!
+        //         ./scripts/test_container.ps1
+        //         """)
+        //     }
+        //     post {
+        //         success{
+        //             echo "App started successfully :)"
+        //         }
+        //         failure {
+        //             echo "app failed to start :("
+        //         }
+        //     }
+        // }
+
+        // stage('Run Tests') {
+        //     steps {
+        //         powershell(script: """
+        //             pytest ./tests/test/sample.py
+        //         """)
+        //     }
+        // }
+
+        // stage('Stop test app') {
+        //     steps {
+        //         powershell(script: """
+        //             docker-compose down
+        //         """)
+        //     }
+        // }
+
+        // stage('Push Container') {
+        //     steps {
+        //         echo "Workspace is $WORKSPACE"
+        //         dir("$WORKSPACE/azure-vote") {
+        //             docker.withRegistry('https://index.docker.io/v1/', 'DockerHub')  {
+        //                 def image = docker.build('blackdentech/jenkins-course:latest')
+        //                 image.push()
+        //             }
+        //         }
+        //     }
+        // }
     }
     
 }
