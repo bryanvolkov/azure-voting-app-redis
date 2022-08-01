@@ -23,38 +23,38 @@ pipeline {
             }
         }
 
-        // stage('Start test app') {
-        //     steps{
-        //         powershell(script: """
-        //         # start app line miss!
-        //         ./scripts/test_container.ps1
-        //         """)
-        //     }
-        //     post {
-        //         success{
-        //             echo "App started successfully :)"
-        //         }
-        //         failure {
-        //             echo "app failed to start :("
-        //         }
-        //     }
-        // }
+        stage('Start test app') {
+            steps{
+                powershell(script: """
+                # start app line miss!
+                ./scripts/test_container.ps1
+                """)
+            }
+            post {
+                success{
+                    echo "App started successfully :)"
+                }
+                failure {
+                    echo "app failed to start :("
+                }
+            }
+        }
 
-        // stage('Run Tests') {
-        //     steps {
-        //         powershell(script: """
-        //             pytest ./tests/test/sample.py
-        //         """)
-        //     }
-        // }
+        stage('Run Tests') {
+            steps {
+                powershell(script: """
+                    pytest ./tests/test/sample.py
+                """)
+            }
+        }
 
-        // stage('Stop test app') {
-        //     steps {
-        //         powershell(script: """
-        //             docker-compose down
-        //         """)
-        //     }
-        // }
+        stage('Stop test app') {
+            steps {
+                powershell(script: """
+                    docker-compose down
+                """)
+            }
+        }
 
         // stage('Push Container') {
         //     steps {
