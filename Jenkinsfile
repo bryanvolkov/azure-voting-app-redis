@@ -25,7 +25,7 @@ pipeline {
 
         stage('Start test app') {
             steps{
-                powershell(script: """
+                sh(script: """
                 # start app line miss!
                 ./scripts/test_container.ps1
                 """)
@@ -42,7 +42,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                powershell(script: """
+                sh(script: """
                     pytest ./tests/test/sample.py
                 """)
             }
@@ -50,7 +50,7 @@ pipeline {
 
         stage('Stop test app') {
             steps {
-                powershell(script: """
+                sh(script: """
                     docker-compose down
                 """)
             }
