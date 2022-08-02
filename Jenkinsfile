@@ -27,8 +27,7 @@ pipeline {
             steps{
                 sh(script: """
                 # start app line miss!
-                docker-compose up -d
-                ./scripts/test_container.sh
+                docker-compose up -d ./scripts/test_container.sh
                 """)
             }
             post {
