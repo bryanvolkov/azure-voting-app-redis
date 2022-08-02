@@ -42,13 +42,13 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                sh(script: """
-                    pytest ./tests/test/sample.py
-                """)
-            }
-        }
+        // stage('Run Tests') {
+        //     steps {
+        //         sh(script: """
+        //             pytest ./tests/test/sample.py
+        //         """)
+        //     }
+        // }
 
         stage('Stop test app') {
             steps {
