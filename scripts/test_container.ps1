@@ -1,15 +1,15 @@
 $count = 0
 do {
     $count++
-    printenv
-    echo "[$env:STAGE_NAME] Starting container [Attempt: $count]"
+    # echo "[$env:STAGE_NAME] Starting container [Attempt: $count]"
     
-    $testStart = Invoke-WebRequest -Uri http://localhost:8000
+    $testStart = curl http://localhost:8000
+    echo $testStart
     
     if ($testStart.statuscode -eq '200') {
         $started = $true
     } else {
-        Start-Sleep -Seconds 1
+        sleep 1s
     }
     
 } until ($started -or ($count -eq 3))
