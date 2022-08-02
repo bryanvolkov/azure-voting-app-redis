@@ -28,7 +28,7 @@ pipeline {
                 sh(script: """
                 # start app line miss!
                 docker-compose up -d
-                ls
+                chmod u+x ./scripts/test_container.sh
                 ./scripts/test_container.sh
                 """)
             }
